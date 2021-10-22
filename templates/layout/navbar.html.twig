@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand me-5" href={{ path('home') }}>Mon Agenda</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if is_granted('ROLE_USER') %}
+                    <li class="nav-item">
+                        <p class="nav-link">Bienvenue {{ app.user.firstName }} {{ app.user.lastName }}</p>
+                    </li>
+                    {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR'))%}
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ path('events_list') }}>Tous les événements du site</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ path('users_list_all') }}>Tous les utilisateurs du site</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ path('events_list') }}>Tous mes événements</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href={{ path('security_logout') }}>Deconnexion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href={{ path('security_register') }}>Inscription</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href={{ path('security_login') }}>Connexion</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

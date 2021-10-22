@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Connexion</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    {{ form_start(loginForm) }}
+    {{ form_widget(loginForm) }}
+    <button class="btn btn-success mt-3">Connexion</button>
+    <a href="{{ path('security_register') }}" class="btn btn-dark btn btn-success mt-3">S'inscrire</a>
+
+    {{ form_end(loginForm) }}
+{% endblock %}

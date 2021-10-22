@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+{% block title %}Liste de tous les événements
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/descriptions.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<h1>Liste de tous les événements</h1>
+<a href="{{ path('events_create') }}" class="btn btn-primary btn-sm">Créer un événement</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for e in events %}
+        <tr>
+            <td>{{ e.date | date('d-m-Y H:i')}}</td>
+            <td>{{ e.name }}</td>
+            <td>
+                <span class="description">cliquer ici</span>
+                <div class="d-none descriptionCard"><p >{{ (e.description) ?  e.description : "Il n'y a pas de description"}}</p></div>
+            </td>
+            <td>
+                <a href="{{ path('events_edit', {'id': e.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                <a href="{{ path('events_delete', {'id': e.id}) }}" class="btn btn-danger btn-sm ml-1">Supprimer</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

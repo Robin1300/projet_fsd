@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block title %}Liste de tous les utilisateurs
+{% endblock %}
+
+{% block body %}
+<h1>Liste de tous les utilisateurs</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for u in users %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.lastName }}</td>
+            <td>{{ u.firstName }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ (u.roles) ? u.roles|join(', ')|replace({'ROLE_': ''})|title : "Utilisateur"  }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

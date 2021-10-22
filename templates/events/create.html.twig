@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter un événement
+{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un événement</h1>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.name) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.date.date) }}
+        <div class="d-flex flex-row" style="width: 20%;">
+            {{ form_widget(form.date.date.day) }}
+            {{ form_widget(form.date.date.month) }}
+            {{ form_widget(form.date.date.year) }}
+        </div>
+
+    </div>
+
+    <div>
+        {{ form_label(form.date.time) }}
+        <div class="d-flex flex-row" style="width: 15%;">
+            {{ form_widget(form.date.time.hour) }}
+            {{ form_widget(form.date.time.minute) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.description) }}
+    </div>
+
+    <button class="btn btn-success mt-5">Enregistrer</button>
+
+    {{ form_end(form) }}
+    </form>
+{% endblock %}

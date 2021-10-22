@@ -1,0 +1,9 @@
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#hello:
+#  path: /hello/{prenom?World}
+#  controller: App\Controller\HelloController::sayHello
+#  defaults:
+##    prenom: World
